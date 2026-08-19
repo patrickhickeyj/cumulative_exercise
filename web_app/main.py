@@ -30,5 +30,15 @@ def convert(state, city):
     return {"lat": lat, "long": long}
 
 
+@app.get("/weather/{lat}/{long}")
+def weather(lat, long):
+    """Docstring"""
+    payload = {"latitude": float(lat), "longitude": float(long)}
+    response = requests.get(
+        "https://api.open-meteo.com/v1/forecast", params=payload, timeout=100
+    )
+    return response.json()
+
+
 if __name__ == "__main__":
     uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
