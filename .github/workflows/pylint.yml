@@ -21,3 +21,5 @@ jobs:
       run: black web_app/
     - name: Type checking
       run: mypy web_app/ --ignore-missing-imports --show-error-codes
+    - name: Pytest
+      run: pytest web_app/
