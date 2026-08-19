@@ -10,19 +10,15 @@ jobs:
         python-version: ["3.10"]
     steps:
     - uses: actions/checkout@v4
-    - name: Set up Python ${{ matrix.python-version }}
+    - name: Set up Python '3.14'
       uses: actions/setup-python@v3
       with:
-        python-version: ${{ matrix.python-version }}
+        python-version: '3.14'
     - name: Install dependencies
-      run: |
-        pip install -r requirements.txt
+      run: pip install -r requirements.txt
     - name: Analysing the code with pylint
-      run: |
-        pylint $(git ls-files '*.py')
+      run: pylint $(git ls-files '*.py')
     - name: Analysing the code with black
-      run: |
-        black web_app/
+      run: black web_app/
     - name: Type checking
-      run: |
-        mypy web_app/
+      run: mypy web_app/
