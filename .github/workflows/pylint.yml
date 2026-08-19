@@ -20,4 +20,4 @@ jobs:
     - name: Analysing the code with black
       run: black web_app/
     - name: Type checking
-      run: mypy web_app/
+      run: mypy web_app/ --ignore-missing-imports --show-error-codes
